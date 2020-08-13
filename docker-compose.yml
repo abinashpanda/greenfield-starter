@@ -1,0 +1,39 @@
+version: "3.8"
+services:
+  database:
+    image: mongo
+    container_name: database
+    environment:
+      MONGO_INITDB_DATABASE: strapi
+      MONGO_INITDB_ROOT_USERNAME: strapi
+      MONGO_INITDB_ROOT_PASSWORD: strapi
+    volumes:
+      - ./data:/data/db
+  server:
+    image: strapi/strapi
+    container_name: server
+    environment:
+      DATABASE_CLIENT: mongo
+      DATABASE_NAME: strapi
+      DATABASE_HOST: database
+      DATABASE_PORT: 27017
+      DATABASE_USERNAME: strapi
+      DATABASE_PASSWORD: strapi
+    volumes:
+      - ./server:/srv/app
+    ports:
+      - "1337:1337"
+    depends_on:
+      - database
+  client:
+    stdin_open: true
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    volumes:
+      - "/srv/client/node_modules"
+      - "./client:/srv/client"
+    depends_on:
+      - server
