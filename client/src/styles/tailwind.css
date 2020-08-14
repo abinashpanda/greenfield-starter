@@ -1,0 +1,15 @@
+@import url('https://rsms.me/inter/inter.css');
+
+@tailwind base;
+
+@tailwind components;
+
+body {
+  @apply font-sans antialiased;
+}
+
+svg {
+  vertical-align: initial;
+}
+
+@tailwind utilities;
