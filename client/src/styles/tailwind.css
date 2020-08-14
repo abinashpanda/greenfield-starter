@@ -12,4 +12,9 @@ svg {
   vertical-align: initial;
 }
 
+.text-num {
+  font-feature-settings: 'tnum';
+  font-variant-numeric: tabular-nums;
+}
+
 @tailwind utilities;
