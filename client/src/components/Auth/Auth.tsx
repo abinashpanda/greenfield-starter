@@ -9,7 +9,11 @@ const client = Axios.create({
   baseURL: process.env.REACT_APP_API_BASE_URL,
 })
 
-const Auth: React.FC = ({ children }) => {
+interface Props {
+  children: React.ReactNode
+}
+
+const Auth = ({ children }: Props) => {
   const [authVerified, setAuthVerified] = useState(false)
 
   const [jwt, setJWT] = useState<string | undefined>(undefined)

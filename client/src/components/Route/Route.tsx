@@ -10,11 +10,7 @@ interface Props extends RouteProps {
   protectedRoute?: boolean
 }
 
-const Route: React.FC<Props> = ({
-  protectedRoute,
-  location,
-  ...routeProps
-}) => {
+const Route = ({ protectedRoute, location, ...routeProps }: Props) => {
   const { jwt, user } = useContext(AuthContext)
 
   if (protectedRoute && !(jwt && user)) {

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import moment from 'moment'
 
-const Home: React.FC = () => {
+const Home = () => {
   const [now, setNow] = useState(moment())
 
   useEffect(() => {
