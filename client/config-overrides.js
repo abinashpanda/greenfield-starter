@@ -1,4 +1,5 @@
 const defaultTheme = require('tailwindcss/defaultTheme')
+const tailwinduiColors = require('@tailwindcss/ui/colors')
 const { override, addPostcssPlugins, addLessLoader } = require('customize-cra')
 
 module.exports = override(
@@ -7,6 +8,11 @@ module.exports = override(
       javascriptEnabled: true,
       modifyVars: {
         '@font-family': ['Inter var', ...defaultTheme.fontFamily.sans],
+        '@primary-color': tailwinduiColors.blue['500'],
+        '@error-color': tailwinduiColors.red['500'],
+        '@height-base': '40px',
+        '@padding-sm': '16px',
+        '@border-radius-base': '4px',
       },
     },
   }),

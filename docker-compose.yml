@@ -33,7 +33,6 @@ services:
     ports:
       - "3000:3000"
     volumes:
-      - "/srv/client/node_modules"
       - "./client:/srv/client"
     depends_on:
       - server

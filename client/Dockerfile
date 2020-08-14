@@ -1,11 +1,16 @@
 FROM node:alpine
 
+RUN mkdir /srv/client && chown 1000:1000 -R /srv/client
+
 WORKDIR /srv/client
 
-COPY package.json /srv/client
+VOLUME /srv/client
 
-RUN yarn install
+COPY docker-entrypoint.sh /usr/local
 
-COPY . /srv/client
+ENTRYPOINT ["docker-entrypoint.sh"]
 
 CMD ["yarn", "start"]
+
+
+EXPOSE 3000
