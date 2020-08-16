@@ -1,16 +1,13 @@
 FROM node:alpine
+EXPOSE 3000
 
-RUN mkdir /srv/client && chown 1000:1000 -R /srv/client
-
+RUN mkdir /srv/client
 WORKDIR /srv/client
-
 VOLUME /srv/client
 
-COPY docker-entrypoint.sh /usr/local
+COPY docker-entrypoint.sh /usr/local/bin
+RUN chmod +x /usr/local/bin/docker-entrypoint.sh
 
 ENTRYPOINT ["docker-entrypoint.sh"]
 
 CMD ["yarn", "start"]
-
-
-EXPOSE 3000
