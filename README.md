@@ -18,7 +18,15 @@ Out of the box support for
 
 ## Setup
 
-To start all the 3 dockers (database, server and client) use
+If you are running the dockers for the first time (or anytime the `Dockerfile`
+or `docker-entrypoint.sh` changes), make sure to build all the containers using
+
+```
+[sudo] docker-compose up --build
+```
+
+
+Later on, to start all the 3 dockers (database, server and client) use
 
 ```
 [sudo] docker-compose up
