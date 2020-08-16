@@ -31,6 +31,7 @@ const Auth = ({ children }: Props) => {
           setJWT(savedJWT)
         } catch (error) {
           message.error(getErrorMessage(error.response?.data?.message))
+          window.localStorage.removeItem('jwt')
         } finally {
           setAuthVerified(true)
         }
