@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useContext } from 'react'
 import moment from 'moment'
 import { Button } from 'antd'
-import { LogoutOutlined } from '@ant-design/icons'
+import { LogoutOutlined, UserOutlined } from '@ant-design/icons'
 import AuthContext from 'contexts/AuthContext'
 
 const Home = () => {
-  const { signOut } = useContext(AuthContext)
+  const { user, signOut } = useContext(AuthContext)
 
   const [now, setNow] = useState(moment())
 
@@ -21,14 +21,17 @@ const Home = () => {
 
   return (
     <div className="relative flex items-center justify-center w-full h-screen bg-gray-900">
-      <Button
-        className="absolute top-0 right-0 m-4"
-        type="primary"
-        icon={<LogoutOutlined />}
-        onClick={signOut}
-      >
-        Signout
-      </Button>
+      <div className="absolute top-0 left-0 right-0 flex items-center justify-end p-4 space-x-8">
+        {user ? (
+          <div className="flex items-center space-x-2">
+            <UserOutlined className="text-gray-500" />
+            <span className="text-gray-400">{user.name}</span>
+          </div>
+        ) : null}
+        <Button type="primary" icon={<LogoutOutlined />} onClick={signOut}>
+          Signout
+        </Button>
+      </div>
 
       <div className="space-x-4 text-6xl font-semibold text-white text-num">
         <span>{now.format('HH:mm:ss')}</span>
