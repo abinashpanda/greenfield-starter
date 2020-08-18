@@ -12,6 +12,8 @@ module.exports = override(
         '@error-color': tailwinduiColors.red['500'],
         '@height-base': '40px',
         '@padding-sm': '16px',
+        '@heading-color': tailwinduiColors.gray['900'],
+        '@text-color': tailwinduiColors.gray['500'],
         '@border-radius-base': '4px',
       },
     },
