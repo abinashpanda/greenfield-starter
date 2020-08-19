@@ -34,5 +34,8 @@ services:
       - "3000:3000"
     volumes:
       - "./client:/srv/client"
+    environment:
+      REACT_APP_API_BASE_URL: http://localhost:1337
+      REACT_APP_GRAPHQL_URL: http://localhost:1337/graphql
     depends_on:
       - server
